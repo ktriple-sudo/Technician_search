@@ -15,18 +15,16 @@ if ($conn->connect_error) {
 
 // Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
+    $skill_name = $_POST['skill_name'];
+    $description = $_POST['description'];
 
-    // Insert data into clients table
-    $sql = "INSERT INTO clients (name, email, phone, address) VALUES (?, ?, ?, ?)";
+    // Insert data into skills table
+    $sql = "INSERT INTO skills (skill_name, description) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $name, $email, $phone, $address);
+    $stmt->bind_param("ss", $skill_name, $description);
     
     if ($stmt->execute()) {
-        $message = "New client added successfully";
+        $message = "New skill added successfully";
     } else {
         $message = "Error: " . $stmt->error;
     }
@@ -40,39 +38,29 @@ $conn->close();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Client</title>
+    <title>Add Skill</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="background">
         <div class="container">
-            <h1>Add New Client</h1>
+            <h1>Add New Skill</h1>
             
             <?php if (isset($message)) { echo "<p class='message'>$message</p>"; } ?>
             
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <div class="form-group">
-                    <label for="name">Client Name:</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="skill_name">Skill Name:</label>
+                    <input type="text" id="skill_name" name="skill_name" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Phone Number:</label>
-                    <input type="text" id="phone" name="phone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="address">Address:</label>
-                    <textarea id="address" name="address" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <input type="submit" value="Add Client">
+                    <input type="submit" value="Add Skill">
                 </div>
             </form>
             
