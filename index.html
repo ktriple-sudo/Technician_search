@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Technician Skill Search</title>
+    <title>Technician Skill Search System</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="background">
-        <div class="container">
-            <h1>Technician Skill Search System</h1>
-            <ul>
-                <li><a href="add_client.php">Add Client</a></li>
-                <li><a href="add_skill.php">Add Skill</a></li>
-                <li><a href="add_technician.php">Add Technician</a></li>
-                <li><a href="add_appointment.php">Book Appointment</a></li>
-            </ul>
+    <div class="background home-background"> <div class="container home-container"> <div class="header-section">
+                <h1 class="system-title">
+    <i class="fas fa-tools"></i> TechnicianLink: Your Skill Search Platform
+</h1>
+                <p class="system-tagline">Connecting clients with skilled professionals.</p>
+                <div class="search-container">
+                    <input type="text" id="mainSearchInput" placeholder="Search technicians by skill or name...">
+                    <button id="mainSearchButton" class="btn primary-btn"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+
+            <div class="navigation-grid">
+                <a href="client.php" class="nav-card">
+                    <i class="fas fa-user-tie icon-large"></i>
+                    <h3>Client Management</h3>
+                    <p>Add and manage client details.</p>
+                </a>
+                <a href="skill.php" class="nav-card">
+                    <i class="fas fa-cogs icon-large"></i>
+                    <h3>Skill Management</h3>
+                    <p>Add and define new skills.</p>
+                </a>
+                <a href="technician.php" class="nav-card">
+                    <i class="fas fa-hard-hat icon-large"></i>
+                    <h3>Technician Management</h3>
+                    <p>Register and update technician profiles.</p>
+                </a>
+                <a href="appointment.php" class="nav-card">
+                    <i class="fas fa-calendar-check icon-large"></i>
+                    <h3>Book Appointment</h3>
+                    <p>Schedule services with available technicians.</p>
+                </a>
+            </div>
         </div>
     </div>
-</body>
+    <script src="script.js"></script> </body>
 </html>
